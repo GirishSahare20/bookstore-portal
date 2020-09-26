@@ -1,0 +1,136 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <base href="/" />
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/Script.js"></script>
+
+    <style type="text/css">
+        /*This class displays the UP arrow*/
+        .arrow-up {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 10px solid black;
+            display: inline-block;
+        }
+
+        /*This class displays the DOWN arrow*/
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid black;
+            display: inline-block;
+        }
+
+        .box {
+            z-index: 1000 !important;
+            position: relative !important;
+            display: none;
+            background: #808080;
+            height: 30px;
+            color: white;
+        }
+    </style>
+</head>
+
+
+<body ng-app="myModule">
+    <div ng-controller="myController">
+        <div>@Html.Raw(ViewBag.Message)</div>
+        <br />
+        Search : <input type="text" placeholder="Search Book"
+                        ng-model="searchText" />@*<button ng-click="searchBookByParameters()">OK</button>*@
+                        <br />
+                        <br />
+                        <div ng-show="loader">Loading...Please Wait</div>
+                        <div class="table-responsive">
+                            <table class="table table-hover" ng-hide="loader">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            Photo
+                                        </th>
+                                        <th ng-click="sortData('Name')" scope="col" style="cursor:default;">
+                                            Name <div ng-class="getSortClass('Name')"></div>
+                                        </th>
+                                        <th ng-click="sortData('ISBN')" scope="col" style="cursor:default;">
+                                            ISBN <div ng-class="getSortClass('ISBN')"></div>
+                                        </th>
+                                        <th ng-click="sortData('Author')" scope="col" style="cursor:default;">
+                                            Author <div ng-class="getSortClass('Author')"></div>
+                                        </th>
+                                        <th scope="col">
+                                            Description
+                                        </th>
+
+
+                                        <th scope="col">
+                                            Price
+                                        </th>
+                                        <th scope="col">
+                                            Stock
+                                        </th>
+                                        <th>
+
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="book in books | orderBy:sortColumn:reverseSort| filter:searchText" scope="row">
+                                        <td>
+                                            <div class="card">
+
+                                                <div class="card-body"><img ng-src="/Images/{{book.Photo}}" alt="Book Image" style="height:70px;width:70px" onerror="this.src='/Images/Book0.jpg'" />  </div>
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {{ book.Name }}
+                                            <br /><a href="#" id="{{book.BookID}}" onclick='return showhidediv(this);'>ShortUrl</a>
+                                            <div id="div{{book.BookID}}" class="box" style="display: none;">@HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)/detail/{{book.SId}}</div>
+
+                                        </td>
+                                        <td> {{ book.ISBN  }} </td>
+                                        <td> {{ book.Author }} </td>
+                                        <td> {{ book.Description  }} </td>
+
+                                        <td> {{ book.Price  | number:2 }} </td>
+                                        <td><div ng-if='book.Stock>0'>Available</div><div ng-if='book.Stock<=0'>--</div>  </td>
+                                        <td><a data-ng-href="@Url.Action("ViewDetail", "Home")/{{book.SId}}" target="_self">Purchase  </a></td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+
+
+                        </div>
+
+                    </div>
+                </body>
+            </html>
+            <script>
+
+            </script>
+            @section Scripts{
+                <script type="text/javascript">
+
+                    $(document).ready(function () {
+
+
+                    });
+                    function showhidediv(obj) {
+                        var divid = "#div" + obj.id;
+                        $(divid).toggle();
+                        return false;
+                    }
+
+                </script>
+            }

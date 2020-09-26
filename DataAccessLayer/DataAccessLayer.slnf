@@ -1,0 +1,8 @@
+{
+  "solution": {
+    "path": "DataAccessLayer.sln",
+    "projects": [
+      "DataAccessLayer.csproj"
+    ]
+  }
+}

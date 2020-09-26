@@ -1,0 +1,15 @@
+D:\MVC\BookGateway\bin\Debug\BookGateway.dll.config
+D:\MVC\BookGateway\bin\Debug\BookGateway.dll
+D:\MVC\BookGateway\bin\Debug\BookGateway.pdb
+D:\MVC\BookGateway\bin\Debug\DataAccessLayer.dll
+D:\MVC\BookGateway\bin\Debug\EntityFramework.dll
+D:\MVC\BookGateway\bin\Debug\EntityFramework.SqlServer.dll
+D:\MVC\BookGateway\bin\Debug\DataAccessLayer.pdb
+D:\MVC\BookGateway\bin\Debug\DataAccessLayer.dll.config
+D:\MVC\BookGateway\bin\Debug\EntityFramework.xml
+D:\MVC\BookGateway\bin\Debug\EntityFramework.SqlServer.xml
+D:\MVC\BookGateway\obj\Debug\BookGatewayService.csproj.CoreCompileInputs.cache
+D:\MVC\BookGateway\obj\Debug\BookGatewayService.csproj.CopyComplete
+D:\MVC\BookGateway\obj\Debug\BookGateway.dll
+D:\MVC\BookGateway\obj\Debug\BookGateway.pdb
+D:\MVC\BookGateway\obj\Debug\BookGatewayService.csprojAssemblyReference.cache
